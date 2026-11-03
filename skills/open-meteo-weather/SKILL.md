@@ -1,7 +1,7 @@
 ---
 name: open-meteo-weather
 description: "Current weather and up-to-7-day forecasts for any city or lat,lon via Open-Meteo — no API key."
-version: 1.0.0
+version: 1.0.1
 author: Weijun Li (CSCI 599 A3)
 license: MIT
 platforms: [linux, macos, windows]
@@ -21,15 +21,17 @@ Also use it for the weather section of a daily briefing.
 
 ## How
 
-`SKILL_DIR` is the directory containing this SKILL.md. The helper uses only the Python standard
-library and the free Open-Meteo API (no key, no account, nothing to install).
+Run the helper with your **terminal** tool (there is no separate weather tool). It uses only the
+Python standard library and the free Open-Meteo API — no key, no account, nothing to install.
+The path below is filled in by Hermes when the skill is loaded:
 
 ```bash
-python3 SKILL_DIR/scripts/forecast.py "Los Angeles"              # today, °F, JSON
-python3 SKILL_DIR/scripts/forecast.py "Berlin, Germany" --days 3 --metric
-python3 SKILL_DIR/scripts/forecast.py "34.05,-118.24" --text     # coordinates, plain text
+python3 ${HERMES_SKILL_DIR}/scripts/forecast.py "Seattle, WA" --days 2 --text
+python3 ${HERMES_SKILL_DIR}/scripts/forecast.py "Berlin, Germany" --days 3 --metric --text
+python3 ${HERMES_SKILL_DIR}/scripts/forecast.py "34.05,-118.24"            # JSON output
 ```
 
+- `--days N` (1–7) covers today plus the following days; "tomorrow" needs `--days 2`.
 - Default units are °F / mph / inch; add `--metric` for °C / km/h / mm. Use metric when the user
   writes in metric or the place is outside the US, unless they asked otherwise.
 - Disambiguate with a country or region after a comma: `"Portland, OR"`, `"Paris, France"`.
