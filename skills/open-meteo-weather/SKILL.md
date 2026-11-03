@@ -1,7 +1,7 @@
 ---
 name: open-meteo-weather
-description: "Current weather and up-to-7-day forecasts for any city or lat,lon via Open-Meteo — no API key."
-version: 1.0.1
+description: "Weather forecasts for any city via Open-Meteo — run its script with the terminal tool (no API key)."
+version: 1.0.2
 author: Weijun Li (CSCI 599 A3)
 license: MIT
 platforms: [linux, macos, windows]
@@ -13,6 +13,15 @@ metadata:
 
 # Open-Meteo Weather
 
+**There is no tool called `open-meteo-weather`.** To get a forecast, call the **`terminal`** tool
+with this command (change the place and days):
+
+```bash
+python3 ${HERMES_SKILL_DIR}/scripts/forecast.py "Seattle, WA" --days 2 --text
+```
+
+Then answer from the printed lines.
+
 ## When to use
 
 Use when the user asks about the weather, temperature, rain, UV, sunrise/sunset, what to wear,
@@ -21,9 +30,8 @@ Also use it for the weather section of a daily briefing.
 
 ## How
 
-Run the helper with your **terminal** tool (there is no separate weather tool). It uses only the
-Python standard library and the free Open-Meteo API — no key, no account, nothing to install.
-The path below is filled in by Hermes when the skill is loaded:
+The helper uses only the Python standard library and the free Open-Meteo API — no key, no
+account, nothing to install. Hermes fills in the path when the skill is loaded. More examples:
 
 ```bash
 python3 ${HERMES_SKILL_DIR}/scripts/forecast.py "Seattle, WA" --days 2 --text
